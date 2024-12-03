@@ -1,0 +1,89 @@
+[
+	{
+		"place": "res://tilemap/cave1.json",
+		"place2": "res://tilemap/cave1obj.json",
+		"position": "(1103, 1871)"
+	},
+	{
+		"item": [
+			[
+				"Sword",
+				"descriptions",
+				{
+					"Stats": {
+						"Aditional Effect": 1,
+						"Attack Damage": 15,
+						"Defense Reduction": 5,
+						"Magic Damage": 15
+					},
+					"Type": 2
+				},
+				"res://assets/items/Sword.png",
+				false
+			],
+			1
+		],
+		"position": "(591, 266)"
+	},
+	{
+		"item": [
+			[
+				"Healing Potion",
+				"Description",
+				{
+					"Type": 0
+				},
+				"res://assets/items/healthPotion.png",
+				true
+			],
+			99
+		],
+		"position": "(108, 397)"
+	},
+	{
+		"item": [
+			[
+				"Sword",
+				"descriptions",
+				{
+					"Stats": {
+						"Aditional Effect": 1,
+						"Attack Damage": 15,
+						"Defense Reduction": 5,
+						"Magic Damage": 15
+					},
+					"Type": 2
+				},
+				"res://assets/items/Sword.png",
+				false
+			],
+			1
+		],
+		"position": "(1121, 579)"
+	},
+	{
+		"item": [
+			[
+				"ChestPlate",
+				"Description",
+				{
+					"Stats": {
+						"Defence": 50
+					},
+					"Type": 1
+				},
+				"res://assets/items/PlateChestPlate.png",
+				false
+			],
+			1
+		],
+		"position": "(687, 778)"
+	},
+	{
+		"ColRow": "(2, 1)",
+		"Sprite": "res://assets/npc/Emily.png",
+		"StartingDialogue": "Emily1",
+		"frameCount": 1,
+		"position": "(3, 2)"
+	}
+]

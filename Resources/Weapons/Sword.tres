@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://sktb08n8lkdg"]
+
+[ext_resource type="Texture2D" uid="uid://cqhlyvh560tm7" path="res://assets/items/Sword.png" id="1_il8ci"]
+[ext_resource type="Script" path="res://scripts/Item.gd" id="1_o2gea"]
+
+[resource]
+script = ExtResource("1_o2gea")
+Name = "Sword"
+Description = "descriptions"
+Statistics = {
+"Stats": {
+"Aditional Effect": 1,
+"Attack Damage": 15,
+"Defense Reduction": 5,
+"Magic Damage": 15
+},
+"Type": 2
+}
+Sprite = ExtResource("1_il8ci")
+Stackable = false

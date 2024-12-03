@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://bdvt7amqhykja"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_gawbx"]
+[ext_resource type="Resource" uid="uid://pgcnjbndygdn" path="res://Resources/playerInventory.tres" id="2_kdivf"]
+[ext_resource type="PackedScene" uid="uid://b2fivpf1odedg" path="res://scenes/choose_class.tscn" id="3_k1ttv"]
+[ext_resource type="PackedScene" uid="uid://k4blxx1pvh4f" path="res://scenes/main_interface.tscn" id="3_o3xom"]
+[ext_resource type="PackedScene" uid="uid://c4t4lx2sghf4v" path="res://scenes/inventory.tscn" id="4_37a2s"]
+[ext_resource type="Texture2D" uid="uid://beo2afc8so06e" path="res://assets/pressF.png" id="6_gjgri"]
+[ext_resource type="PackedScene" uid="uid://csenas02fqcxx" path="res://scenes/QuestList.tscn" id="7_8flsw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uq5g"]
+size = Vector2(96, 96)
+
+[sub_resource type="LabelSettings" id="LabelSettings_puw4p"]
+font_size = 20
+
+[sub_resource type="Animation" id="Animation_uvdku"]
+resource_name = "pressed"
+length = 0.666683
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressF:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7g0k"]
+_data = {
+"pressed": SubResource("Animation_uvdku")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jh48d"]
+font_size = 40
+
+[node name="Player" type="Node2D" groups=["Player"]]
+script = ExtResource("1_gawbx")
+inventory = ExtResource("2_kdivf")
+
+[node name="ChooseClass" parent="." instance=ExtResource("3_k1ttv")]
+classID = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="MainInterface" parent="." instance=ExtResource("3_o3xom")]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+
+[node name="Inventory" parent="." instance=ExtResource("4_37a2s")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -511.0
+offset_top = -247.0
+offset_right = -511.0
+offset_bottom = -247.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+visible = false
+position = Vector2(48, 48)
+shape = SubResource("RectangleShape2D_8uq5g")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 329.0
+offset_top = -232.0
+offset_right = 803.0
+offset_bottom = 257.0
+text = "Stats"
+label_settings = SubResource("LabelSettings_puw4p")
+horizontal_alignment = 1
+
+[node name="PressF" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(46, -34)
+scale = Vector2(2, 2)
+texture = ExtResource("6_gjgri")
+hframes = 4
+
+[node name="FkeyAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b7g0k")
+}
+autoplay = "pressed"
+
+[node name="QuestList" parent="." instance=ExtResource("7_8flsw")]
+offset_left = -864.0
+offset_top = 168.0
+offset_right = -864.0
+offset_bottom = 168.0
+
+[node name="fps counter" type="Label" parent="."]
+offset_left = 440.0
+offset_top = -526.0
+offset_right = 947.0
+offset_bottom = -460.0
+text = "fps"
+label_settings = SubResource("LabelSettings_jh48d")
+horizontal_alignment = 2
+
+[connection signal="area_entered" from="PlayerCollision" to="." method="_on_player_collision_area_entered"]
+[connection signal="area_exited" from="PlayerCollision" to="." method="_on_player_collision_area_exited"]

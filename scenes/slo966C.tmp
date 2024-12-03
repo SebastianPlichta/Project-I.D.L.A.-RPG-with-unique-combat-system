@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://q0tnb6ai8nv"]
+
+[ext_resource type="StyleBox" uid="uid://v74fb071iteb" path="res://panel.stylebox" id="1_ck87x"]
+[ext_resource type="Texture2D" uid="uid://bjem1xc2wne20" path="res://assets/UI/slot.png" id="2_leu0v"]
+[ext_resource type="Script" path="res://scripts/slot.gd" id="2_moyvu"]
+
+[sub_resource type="Theme" id="Theme_3f0ge"]
+Panel/styles/panel = ExtResource("1_ck87x")
+
+[node name="slot" type="TextureRect" groups=["Slot"]]
+custom_minimum_size = Vector2(72, 72)
+offset_right = 72.0
+offset_bottom = 72.0
+theme = SubResource("Theme_3f0ge")
+texture = ExtResource("2_leu0v")
+script = ExtResource("2_moyvu")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

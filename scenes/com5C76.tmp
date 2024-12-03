@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1axi1t87h2jb"]
+
+[ext_resource type="Script" path="res://scripts/combat_system.gd" id="1_epmv0"]
+[ext_resource type="Texture2D" uid="uid://135r5nfkv12o" path="res://assets/enemis/troll.png" id="2_jdosm"]
+[ext_resource type="Material" uid="uid://b1vmorm3mukxc" path="res://Resources/Particles/bloodParticle.tres" id="2_sqfxa"]
+[ext_resource type="Script" path="res://scripts/enemis.gd" id="3_7j8oa"]
+[ext_resource type="Texture2D" uid="uid://bqr0dmehvyqyo" path="res://assets/particles/bloodParticle.png" id="3_g0sbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dupa"]
+size = Vector2(171, 175)
+
+[node name="Combat system" type="Node2D"]
+script = ExtResource("1_epmv0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="EnemisStats" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Enemis" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Node2D" type="Area2D" parent="VBoxContainer/Enemis"]
+position = Vector2(818, 302)
+script = ExtResource("3_7j8oa")
+
+[node name="Troll" type="Sprite2D" parent="VBoxContainer/Enemis/Node2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_jdosm")
+centered = false
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/Enemis/Node2D"]
+position = Vector2(75.5, 80.5)
+shape = SubResource("RectangleShape2D_7dupa")
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Enemis/Node2D"]
+
+[node name="FightMenu" type="Panel" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+
+[node name="bloodParts" type="GPUParticles2D" parent="."]
+position = Vector2(480, 438)
+emitting = false
+amount = 25
+process_material = ExtResource("2_sqfxa")
+texture = ExtResource("3_g0sbj")
+lifetime = 0.2
+
+[connection signal="mouse_entered" from="VBoxContainer/Enemis/Node2D" to="." method="_on_node_2d_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Enemis/Node2D" to="." method="_on_node_2d_mouse_exited"]
+[connection signal="timeout" from="VBoxContainer/Enemis/Node2D/Timer" to="VBoxContainer/Enemis/Node2D" method="_on_timer_timeout"]

@@ -1,0 +1,169 @@
+[gd_scene load_steps=12 format=3 uid="uid://k4blxx1pvh4f"]
+
+[ext_resource type="Texture2D" uid="uid://vhym84kaf3nl" path="res://assets/avatarPlace.png" id="1_q1qbu"]
+[ext_resource type="Texture2D" uid="uid://bp56ydig0drbn" path="res://assets/mageHead.png" id="2_4bsxg"]
+[ext_resource type="Texture2D" uid="uid://b3ykqyqc34qfp" path="res://assets/PrgoressBars/ProgressBarBackground.png" id="3_n8665"]
+[ext_resource type="FontFile" uid="uid://b10i1nui5a6cr" path="res://assets/fonts/Helvetica-Bold.ttf" id="3_s4acp"]
+[ext_resource type="Texture2D" uid="uid://dqsfqdo7n4gvl" path="res://assets/PrgoressBars/ProgressBarBorder.png" id="4_afi2m"]
+[ext_resource type="Texture2D" uid="uid://vopvb8c7quhp" path="res://assets/PrgoressBars/ProgressBarFill.png" id="5_dnra1"]
+[ext_resource type="Texture2D" uid="uid://d13xvn8g7236y" path="res://assets/PrgoressBars/ProgressBarManaFill.png" id="6_qeeku"]
+[ext_resource type="Texture2D" uid="uid://cnop6baxkysg4" path="res://assets/PrgoressBars/ProgressBarExpirienceFill.png" id="7_sl8qk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpebw"]
+atlas = ExtResource("2_4bsxg")
+region = Rect2(7, 1, 17.0573, 18)
+
+[sub_resource type="LabelSettings" id="LabelSettings_77sr7"]
+font = ExtResource("3_s4acp")
+font_size = 25
+font_color = Color(1, 1, 0, 1)
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_4b8hc"]
+font = ExtResource("3_s4acp")
+font_size = 15
+font_color = Color(0.937116, 0.959762, 1, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 420.0
+offset_bottom = 50.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("1_q1qbu")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -25.5
+offset_right = 25.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qpebw")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -23.0
+offset_right = 21.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_77sr7")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+value = 100.0
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_n8665")
+texture_over = ExtResource("4_afi2m")
+texture_progress = ExtResource("5_dnra1")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TextureProgressBar2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.5
+offset_top = -23.0
+offset_right = 35.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000/1000"
+label_settings = SubResource("LabelSettings_4b8hc")
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+value = 100.0
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_n8665")
+texture_over = ExtResource("4_afi2m")
+texture_progress = ExtResource("6_qeeku")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.5
+offset_top = -23.0
+offset_right = 35.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000/1000"
+label_settings = SubResource("LabelSettings_4b8hc")
+horizontal_alignment = 1
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+value = 100.0
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_n8665")
+texture_over = ExtResource("4_afi2m")
+texture_progress = ExtResource("7_sl8qk")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TextureProgressBar3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -8.0
+offset_right = 192.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.996594)
+text = "1000/1000"
+label_settings = SubResource("LabelSettings_4b8hc")
+horizontal_alignment = 1

@@ -1,0 +1,14 @@
+[
+	{
+		"place": "res://tilemap/outside.json",
+		"place2": "res://tilemap/outsideobj.json",
+		"position": "(572, 1596)"
+	},
+	{
+		"ColRow": "(2, 1)",
+		"Sprite": "res://assets/enemis/troll.png",
+		"StartingDialogue": "Troll1",
+		"frameCount": 1,
+		"position": "(3, 2)"
+	}
+]

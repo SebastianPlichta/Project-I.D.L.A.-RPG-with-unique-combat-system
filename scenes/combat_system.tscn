@@ -1,0 +1,296 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1axi1t87h2jb"]
+
+[ext_resource type="Script" path="res://scripts/combat_system.gd" id="1_epmv0"]
+[ext_resource type="Texture2D" uid="uid://135r5nfkv12o" path="res://assets/enemis/troll.png" id="2_jdosm"]
+[ext_resource type="Script" path="res://scripts/enemis.gd" id="3_7j8oa"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="4_sumy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dupa"]
+size = Vector2(171, 175)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5aaa"]
+line_spacing = 0.0
+font = ExtResource("4_sumy1")
+font_size = 30
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udoa5"]
+load_path = "res://.godot/imported/crystal1.png-739ed89f19405185f856b469a2727c3e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gkl72"]
+load_path = "res://.godot/imported/crystal2.png-4736e63fbee74777e8c9098c242e00cb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c3h2f"]
+load_path = "res://.godot/imported/crystal3.png-4d2ea96a8dc7055ceb3bd0aa5adeb084.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5ovc"]
+font = ExtResource("4_sumy1")
+font_size = 20
+
+[node name="Combat system" type="Node2D"]
+script = ExtResource("1_epmv0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+mouse_filter = 2
+
+[node name="EnemisStats" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="turnsCounter" type="Label" parent="VBoxContainer/EnemisStats"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tura"
+
+[node name="Enemis" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 575)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Enemis"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Node2D" type="Area2D" parent="VBoxContainer/Enemis"]
+position = Vector2(272, 221)
+script = ExtResource("3_7j8oa")
+
+[node name="Troll" type="Sprite2D" parent="VBoxContainer/Enemis/Node2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_jdosm")
+centered = false
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/Enemis/Node2D"]
+position = Vector2(75.5, 80.5)
+shape = SubResource("RectangleShape2D_7dupa")
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Enemis/Node2D"]
+wait_time = 5.0
+
+[node name="FightMenu" type="Panel" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="MainRows" type="VBoxContainer" parent="VBoxContainer/FightMenu"]
+visible = false
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 396.0
+alignment = 1
+
+[node name="HeadersCol" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Preview" type="Label" parent="VBoxContainer/FightMenu/MainRows/HeadersCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+text = "Podgląd
+"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+
+[node name="SpellCreate" type="Label" parent="VBoxContainer/FightMenu/MainRows/HeadersCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+text = "Menu Tworzenia Ataku (1/3)
+"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+
+[node name="Stats" type="Label" parent="VBoxContainer/FightMenu/MainRows/HeadersCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+text = "Opis"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubHeaderCol" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="previewtext" type="Label" parent="VBoxContainer/FightMenu/MainRows/SubHeaderCol"]
+custom_minimum_size = Vector2(635, 60)
+layout_mode = 2
+text = "Aktualny wygląd zaklęcia
+"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChooseCrystalsLabel" type="Label" parent="VBoxContainer/FightMenu/MainRows/SubHeaderCol"]
+custom_minimum_size = Vector2(635, 60)
+layout_mode = 2
+text = "Wybierz kryształ"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="elementName" type="Label" parent="VBoxContainer/FightMenu/MainRows/SubHeaderCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubRows" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviewIMG" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows/SubRows"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="spellElements" type="Control" parent="VBoxContainer/FightMenu/MainRows/SubRows/PreviewIMG"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="slots" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows/SubRows"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="slot1" type="TextureRect" parent="VBoxContainer/FightMenu/MainRows/SubRows/slots"]
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_udoa5")
+stretch_mode = 5
+metadata/cItem = 0
+
+[node name="slot2" type="TextureRect" parent="VBoxContainer/FightMenu/MainRows/SubRows/slots"]
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_gkl72")
+stretch_mode = 5
+metadata/cItem = 0
+
+[node name="slot3" type="TextureRect" parent="VBoxContainer/FightMenu/MainRows/SubRows/slots"]
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_c3h2f")
+stretch_mode = 5
+metadata/cItem = 0
+
+[node name="StatsTxt" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows/SubRows"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Description" type="Label" parent="VBoxContainer/FightMenu/MainRows/SubRows/StatsTxt"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Stats" type="Label" parent="VBoxContainer/FightMenu/MainRows/SubRows/StatsTxt"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_w5ovc")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MainRows2" type="VBoxContainer" parent="VBoxContainer/FightMenu"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 396.0
+alignment = 1
+
+[node name="HeadersCol" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Preview" type="Label" parent="VBoxContainer/FightMenu/MainRows2/HeadersCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+text = "Podgląd
+"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+
+[node name="Stats" type="Label" parent="VBoxContainer/FightMenu/MainRows2/HeadersCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+text = "Statystyki"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubHeaderCol" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows2"]
+layout_mode = 2
+alignment = 1
+
+[node name="previewtext" type="Label" parent="VBoxContainer/FightMenu/MainRows2/SubHeaderCol"]
+custom_minimum_size = Vector2(635, 60)
+layout_mode = 2
+text = "Aktualny wygląd zaklęcia
+"
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="elementName" type="Label" parent="VBoxContainer/FightMenu/MainRows2/SubHeaderCol"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_t5aaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubRows" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows2"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviewIMG" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows2/SubRows"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="StatsTxt" type="HBoxContainer" parent="VBoxContainer/FightMenu/MainRows2/SubRows"]
+custom_minimum_size = Vector2(635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Description" type="Label" parent="VBoxContainer/FightMenu/MainRows2/SubRows/StatsTxt"]
+custom_minimum_size = Vector2(635, 200)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="nextTurn" type="Button" parent="VBoxContainer/FightMenu/MainRows2"]
+layout_mode = 2
+text = "Następna tura"
+
+[node name="doubleCast" type="Timer" parent="."]
+
+[connection signal="mouse_entered" from="VBoxContainer/Enemis/Node2D" to="." method="_on_node_2d_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Enemis/Node2D" to="." method="_on_node_2d_mouse_exited"]
+[connection signal="timeout" from="VBoxContainer/Enemis/Node2D/Timer" to="VBoxContainer/Enemis/Node2D" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot1" to="." method="_mouse_entered" binds= [0]]
+[connection signal="mouse_exited" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot1" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot2" to="." method="_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot2" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot3" to="." method="_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="VBoxContainer/FightMenu/MainRows/SubRows/slots/slot3" to="." method="_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/FightMenu/MainRows2/nextTurn" to="." method="_on_next_turn_pressed"]
+[connection signal="timeout" from="doubleCast" to="." method="_on_double_cast_timeout"]

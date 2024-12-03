@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvbcrj2gb84e6"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_quwhl"]
+[ext_resource type="PackedScene" uid="uid://b2fivpf1odedg" path="res://scenes/choose_class.tscn" id="1_v4w2b"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_quwhl")
+
+[node name="ChooseClass" parent="." instance=ExtResource("1_v4w2b")]
+position = Vector2(831, 386)
+
+[node name="choose" type="Button" parent="."]
+offset_left = 789.0
+offset_top = 515.0
+offset_right = 980.0
+offset_bottom = 546.0
+text = "choose
+"
+
+[node name="choose2" type="Button" parent="."]
+offset_left = 793.0
+offset_top = 606.0
+offset_right = 984.0
+offset_bottom = 637.0
+text = "test combat system
+"
+
+[node name="LeftArrow" type="Button" parent="."]
+offset_left = 720.0
+offset_top = 509.0
+offset_right = 762.0
+offset_bottom = 555.0
+text = "<-"
+
+[node name="rightArrow" type="Button" parent="."]
+offset_left = 999.0
+offset_top = 509.0
+offset_right = 1041.0
+offset_bottom = 555.0
+text = "->"
+
+[connection signal="pressed" from="choose" to="." method="_on_choose_pressed"]
+[connection signal="pressed" from="choose2" to="." method="_on_choose2_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="rightArrow" to="." method="_on_right_arrow_pressed"]

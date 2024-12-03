@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ek3uiekx8h6v"]
+
+[ext_resource type="Script" path="res://scripts/Item.gd" id="1_0i5jw"]
+[ext_resource type="Texture2D" uid="uid://bbse6mhyja5np" path="res://assets/items/PlateChestPlate.png" id="1_s4r2c"]
+
+[resource]
+script = ExtResource("1_0i5jw")
+Name = "ChestPlate"
+Description = "Description"
+Statistics = {
+"Stats": {
+"Defence": 50
+},
+"Type": 1
+}
+Sprite = ExtResource("1_s4r2c")
+Stackable = false

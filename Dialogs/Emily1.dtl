@@ -1,0 +1,36 @@
+if {emily.FirstDialogue} == false:
+	Emily: Proszę… pomóż mi… Mój kotek! Wpadł do jeziora i… i nie może się wydostać!
+	- Przyjmij zadanie
+		player: Spokojnie, oddychaj. Gdzie on jest?
+		Emily: Na małej wysepce… tam, pośrodku! Jest przerażony, mokry… próbowałam mu pomóc, ale tylko bardziej się wystraszył
+		player: Rozumiem. Spróbuję go wydostać. Masz może coś, co mógłbym zabrać, żeby go uspokoić?
+		Emily: Tak, tak! [wyciąga wstążkę]
+		Emily: To jego ulubiona zabawka, zawsze się nią bawi… Może poczuje się bezpieczniej, jak ją zobaczy.
+		player: Wezmę ją. Będę ostrożny – wrócimy razem, obiecuję.
+		Emily: Dziękuję… naprawdę, z całego serca. Mruczek to wszystko, co mam…
+		set {emily.Accepted} = true
+	- Ignoruj
+		player: Przykro mi ale nie mogę nic zrobic.
+	set {emily.FirstDialogue} = true
+else:
+	if {emily.Accepted} == true:
+		Emily: I jak? Udało ci się?
+		player: Jeszcze nad tym pracuje.
+	else:
+		Emily: Zmieniłeś zdanie?
+		- Tak (Przyjmij zadanie)
+			player: co się stało?
+			Emily: Mój kotek! Wpadł do jeziora i… i nie może się wydostać! Jest na małej wysepce… tam, pośrodku! Jest przerażony, mokry… próbowałam mu pomóc, ale tylko bardziej się wystraszył
+			player: Rozumiem. Spróbuję go wydostać. Masz może coś, co mógłbym zabrać, żeby go uspokoić?
+			Emily: Tak, tak! [wyciąga wstążkę]
+			Emily: To jego ulubiona zabawka, zawsze się nią bawi… Może poczuje się bezpieczniej, jak ją zobaczy.
+			player: Wezmę ją. Będę ostrożny – wrócimy razem, obiecuję.
+			Emily: Dziękuję… naprawdę, z całego serca. Mruczek to wszystko, co mam…
+			set {emily.Accepted} = true
+		- Nie (Ignoruj)
+			player: Przykro mi ale nie mogę nic zrobic.
+if {emily.Accepted} == true:
+	if {emily.kittenToy} == false:
+		[signal arg="emillyQuestAccept"]
+		set {emily.kittenToy} = true
+		Dodano kocią zabawke do ekwipunku

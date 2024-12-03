@@ -1,0 +1,15 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://b1vmorm3mukxc"]
+
+[resource]
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 102.6
+initial_velocity_max = 302.6
+scale_max = 2.0
+turbulence_influence_min = 0.145
+turbulence_influence_max = 0.427
+turbulence_initial_displacement_min = -54.9
+turbulence_initial_displacement_max = 1.49012e-06
